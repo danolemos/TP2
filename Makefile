@@ -1,10 +1,12 @@
-CC = gcc
-CFLAGS = -Wall -g
+CC = gcc-11
+CFLAGS = -Wall -Wextra -std=c11
 
-all: main
+TARGET = meu_programa
+SOURCE_FILES = main.c queue.c queue.h
 
-main: main.c
-	$(CC) $(CFLAGS) -o main main.c
+$(TARGET): $(SOURCE_FILES)
+	$(CC) $(CFLAGS) $^ -o $@
 
+.PHONY: clean
 clean:
-	rm -f main
+	rm -f $(TARGET)
